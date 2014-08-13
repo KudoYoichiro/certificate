@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  resources :maps
+
+  resources :statuses
+
+  resources :operations
+
+  resources :instruments
+
+  resources :makers
+
+  resources :engineers
+
+  resources :service_centers
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

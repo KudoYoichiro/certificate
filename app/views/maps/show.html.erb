@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Engineer:</strong>
+  <%= @map.engineer %>
+</p>
+
+<p>
+  <strong>Instrument:</strong>
+  <%= @map.instrument %>
+</p>
+
+<p>
+  <strong>Operation:</strong>
+  <%= @map.operation %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @map.status %>
+</p>
+
+<%= link_to 'Edit', edit_map_path(@map) %> |
+<%= link_to 'Back', maps_path %>

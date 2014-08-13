@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  engineer_id: 
+  instrument_id: 
+  operation_id: 
+  status_id: 
+
+two:
+  engineer_id: 
+  instrument_id: 
+  operation_id: 
+  status_id: 
