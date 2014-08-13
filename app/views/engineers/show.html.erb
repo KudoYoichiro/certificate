@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <table class="table table-bordered">
-	<tr class="certificate_table_caption">
-		<td>Name</td>
-		<td><%= @engineer.name %></td>
+		<tr>
+		<td class="certificate_table_caption">Service center</td>
+		<td><%= @engineer.service_center.name %></td>
 	</tr>
-	<tr class="certificate_table_caption">
-		<td>Service center</td>
-		<td><%= @engineer.service_center %></td>
+	<tr>
+		<td class="certificate_table_caption">Name</td>
+		<td><%= @engineer.name %></td>
 	</tr>
 </table>
 

@@ -13,7 +13,7 @@
     <% @instruments.each do |instrument| %>
       <tr>
         <td><%= instrument.name %></td>
-        <td><%= instrument.maker %></td>
+        <td><%= instrument.maker.name %></td>
         <td><%= link_to 'Show', instrument, class: :crud_control %>
         	<%= link_to 'Edit', edit_instrument_path(instrument), class: :crud_control %>
         	<%= link_to 'Destroy', instrument, method: :delete, data: { confirm: 'Are you sure?' }, class: :crud_control %>

@@ -15,10 +15,18 @@ class MapsController < ApplicationController
   # GET /maps/new
   def new
     @map = Map.new
+    @service_centers = ServiceCenter.all
+    @makers = Maker.all
+    @operations = Operation.all
+    @statuses = Status.all
   end
 
   # GET /maps/1/edit
   def edit
+    @service_centers = ServiceCenter.all
+    @makers = Maker.all
+    @operations = Operation.all
+    @statuses = Status.all
   end
 
   # POST /maps

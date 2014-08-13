@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.label :maker_id %><br>
+    <%= f.collection_select :maker_id, @makers, :id, :name %>
   </div>
   <div class="field">
-    <%= f.label :maker_id %><br>
-    <%= f.text_field :maker_id %>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
   </div>
   <div class="actions">
     <%= f.submit %>

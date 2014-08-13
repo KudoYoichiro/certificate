@@ -1,9 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @operation.name %>
-</p>
+<table class="table table-bordered">
+	<tr>
+		<td class="certificate_table_caption">Name</td>
+		<td><%= @operation.name %></td>
+	</tr>
+</table>
 
 <%= link_to 'Edit', edit_operation_path(@operation) %> |
 <%= link_to 'Back', operations_path %>

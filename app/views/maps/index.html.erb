@@ -1,4 +1,4 @@
-<h1>Listing maps</h1>
+<h1>Listing certificate maps</h1>
 
 <table>
   <thead>
@@ -14,10 +14,10 @@
   <tbody>
     <% @maps.each do |map| %>
       <tr>
-        <td><%= map.engineer %></td>
-        <td><%= map.instrument %></td>
-        <td><%= map.operation %></td>
-        <td><%= map.status %></td>
+        <td><%= map.engineer.name %></td>
+        <td><%= map.instrument.name %></td>
+        <td><%= map.operation.name %></td>
+        <td><%= map.status.name unless map.status.blank? %></td>
         <td><%= link_to 'Show', map %></td>
         <td><%= link_to 'Edit', edit_map_path(map) %></td>
         <td><%= link_to 'Destroy', map, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Map', new_map_path %>
+<%= link_to 'New Certificate Map', new_map_path %>

@@ -13,19 +13,19 @@
 
   <div class="field">
     <%= f.label :engineer_id %><br>
-    <%= f.text_field :engineer_id %>
+    <%= f.grouped_collection_select :engineer_id, @service_centers, :engineers, :name, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :instrument_id %><br>
-    <%= f.text_field :instrument_id %>
+    <%= f.grouped_collection_select :instrument_id, @makers, :instruments, :name, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :operation_id %><br>
-    <%= f.text_field :operation_id %>
+    <%= f.collection_select :operation_id, @operations, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :status_id %><br>
-    <%= f.text_field :status_id %>
+    <%= f.collection_select :status_id, @statuses, :id, :name, include_blank: true %>
   </div>
   <div class="actions">
     <%= f.submit %>

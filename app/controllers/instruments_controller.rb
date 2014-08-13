@@ -15,10 +15,12 @@ class InstrumentsController < ApplicationController
   # GET /instruments/new
   def new
     @instrument = Instrument.new
+    @makers = Maker.all
   end
 
   # GET /instruments/1/edit
   def edit
+    @Mmakers = Maker.all
   end
 
   # POST /instruments

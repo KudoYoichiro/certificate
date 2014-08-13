@@ -1,24 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Engineer:</strong>
-  <%= @map.engineer %>
-</p>
-
-<p>
-  <strong>Instrument:</strong>
-  <%= @map.instrument %>
-</p>
-
-<p>
-  <strong>Operation:</strong>
-  <%= @map.operation %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @map.status %>
-</p>
+<table class="table table-bordered">
+	<tr>
+		<td class="certificate_table_caption">Engineer</td>
+		<td><%= @map.engineer.name %></td>
+	</tr>
+	<tr>
+		<td class="certificate_table_caption">Instrument</td>
+		<td><%= @map.instrument.name %></td>
+	</tr>
+	<tr>
+		<td class="certificate_table_caption">Operation</td>
+		<td><%= @map.operation.name %></td>
+	</tr>
+	<tr>
+		<td class="certificate_table_caption">Status</td>
+		<td><%= @map.status.name unless @map.status.blank? %></td>
+	</tr>
+</table>
 
 <%= link_to 'Edit', edit_map_path(@map) %> |
 <%= link_to 'Back', maps_path %>

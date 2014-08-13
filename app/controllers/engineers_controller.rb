@@ -15,10 +15,12 @@ class EngineersController < ApplicationController
   # GET /engineers/new
   def new
     @engineer = Engineer.new
+    @service_centers = ServiceCenter.all
   end
 
   # GET /engineers/1/edit
   def edit
+    @service_centers = ServiceCenter.all
   end
 
   # POST /engineers
