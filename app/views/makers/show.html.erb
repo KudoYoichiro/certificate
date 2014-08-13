@@ -1,9 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @maker.name %>
-</p>
+<table class="table table-bordered">
+	<tr>
+		<td class="certificate_table_caption">Name</td>
+		<td><%= @maker.name %></td>
+	</tr>
+</table>
 
 <%= link_to 'Edit', edit_maker_path(@maker) %> |
 <%= link_to 'Back', makers_path %>

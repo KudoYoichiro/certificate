@@ -14,3 +14,11 @@
  *= require_tree .
  *= require_self
  */
+
+.certificate_table_caption {
+	color: #017589;
+	width: 20%;
+}
+.crud_control {
+	margin-right: 10px;
+}

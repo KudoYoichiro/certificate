@@ -1,14 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @instrument.name %>
-</p>
-
-<p>
-  <strong>Maker:</strong>
-  <%= @instrument.maker %>
-</p>
+<table class="table table-bordered">
+	<tr>
+		<td class="certificate_table_caption">Name</td>
+		<td><%= @instrument.name %></td>
+	</tr>
+	<tr>
+		<td class="certificate_table_caption">Maker</td>
+		<td><%= @instrument.maker %></td>
+	</tr>
+</table>
 
 <%= link_to 'Edit', edit_instrument_path(@instrument) %> |
 <%= link_to 'Back', instruments_path %>

@@ -1,9 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @status.name %>
-</p>
+<table class="table table-bordered">
+	<tr>
+		<td class="certificate_table_caption">Name</td>
+		<td><%= @status.name %></td>
+	</tr>
+</table>
 
 <%= link_to 'Edit', edit_status_path(@status) %> |
 <%= link_to 'Back', statuses_path %>

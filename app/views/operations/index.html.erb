@@ -1,10 +1,10 @@
 <h1>Listing operations</h1>
 
-<table>
+<table class="table table-bordered">
   <thead>
-    <tr>
+    <tr class="certificate_table_caption">
       <th>Name</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -12,9 +12,10 @@
     <% @operations.each do |operation| %>
       <tr>
         <td><%= operation.name %></td>
-        <td><%= link_to 'Show', operation %></td>
-        <td><%= link_to 'Edit', edit_operation_path(operation) %></td>
-        <td><%= link_to 'Destroy', operation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', operation, class: :crud_control %>
+        	<%= link_to 'Edit', edit_operation_path(operation), class: :crud_control %>
+        	<%= link_to 'Destroy', operation, method: :delete, data: { confirm: 'Are you sure?' }, class: :crud_control %>
+        	</td>
       </tr>
     <% end %>
   </tbody>
