@@ -1,0 +1,28 @@
+ja:
+  activerecord:
+    models:
+      engineer: エンジニア
+      instrument: 機種
+      maker: メーカー
+      map: マップ
+      operation: 作業
+      service_center: SC
+      status: ステータス
+    attributes:
+      engineer:
+        name: エンジニア
+      instrument:
+        name: 機種
+      maker:
+        name: メーカー
+      map:
+        engineer_id: エンジニア
+        instrument_id: 機種
+        operation_id: 作業
+        status_id: ステータス
+      operation:
+        name: 作業
+      service_center:
+        name: SC
+      status:
+        name: ステータス
