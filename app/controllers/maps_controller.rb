@@ -4,7 +4,11 @@ class MapsController < ApplicationController
   # GET /maps
   # GET /maps.json
   def index
-    @maps = Map.all
+    @makers = Maker.all.order(name: :asc)
+    @maker = params[:maker_id].blank? ? @makers.first : Maker.find(params[:maker_id])
+    
+    @service_centers = ServiceCenter.all
+    @operations = Operation.all
   end
 
   # GET /maps/1

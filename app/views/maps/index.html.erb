@@ -1,30 +1,46 @@
 <h1>Listing certificate maps</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Engineer</th>
-      <th>Instrument</th>
-      <th>Operation</th>
-      <th>Status</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<!--/ Maker select tab -->
+<ul class="nav nav-tabs" role="tablist">
+	<% @makers.each do |maker| %>
+	<li<% if maker.id == @maker.id %> class="active" <% end %>>
+		<%= link_to maker.name, {action: :index, maker_id: maker.id} %>
+	</li>
+	<% end %>
+</ul>
 
-  <tbody>
-    <% @maps.each do |map| %>
-      <tr>
-        <td><%= map.engineer.name %></td>
-        <td><%= map.instrument.name %></td>
-        <td><%= map.operation.name %></td>
-        <td><%= map.status.name unless map.status.blank? %></td>
-        <td><%= link_to 'Show', map %></td>
-        <td><%= link_to 'Edit', edit_map_path(map) %></td>
-        <td><%= link_to 'Destroy', map, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+<% @maker.instruments.each do |instrument| %>
+<h4 class="map_title"><%= instrument.name %></h4>
+<table class="table table-bordered table-striped map_table">
+	<thead class="map_header">
+		<tr>
+			<th class="caption">Service Center</th>
+			<th class="caption">Engineer</th>
+			<% @operations.each do |operation| %>
+			<th><%= operation.name %></th>
+			<% end %>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<% @service_centers.each do |service_center| %>
+		<% first_row = true %>
+		<% service_center.engineers.each do |engineer| %>
+		<tr>
+			<% if first_row %>
+			<td rowspan="<%= service_center.engineers.size %>"><%= service_center.name %></td>
+			<% first_row = false %>
+			<% end %>
+			<td><%= engineer.name %></td>
+			<% @operations.each do |operation| %>
+			<td class="map_data"><%= get_status(instrument.id, engineer.id, operation.id) %></td>
+			<% end %>
+		</tr>
+		<% end %>
+		<% end %>
+	</tbody>
 </table>
+<% end %>
 
 <br>
 

@@ -1,3 +1,37 @@
 // Place all the styles related to the maps controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.map_table {
+  width: 500px;
+}
+
+.map_title {
+  width: 500px;
+  margin: 10px 0 0 0;
+  padding: 2px 8px;
+  border-width: 0 10px;
+  border-color: #80CEDD;
+  border-style: solid;
+  background: #029EBC;
+  color:#EBF7FA;
+  font-size: 30px;
+  line-height: 140%;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.map_header {
+  background: #fff;
+  color: #494949;
+  font-size: 15px;
+}
+
+.map_header .caption {
+  width: 120px;
+}
+
+.map_data {
+  font-weight: bold;
+  text-align: center;
+}
