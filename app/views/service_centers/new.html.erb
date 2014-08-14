@@ -1,3 +1,8 @@
+<% unless flash[:no_sc_error].blank? %>
+<div id="error_explanation">
+	<h2><%= flash[:no_sc_error] %></h2>
+</div>
+<% end %>
 <h1>New service center</h1>
 
 <%= render 'form' %>

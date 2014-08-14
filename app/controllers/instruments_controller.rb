@@ -5,6 +5,9 @@ class InstrumentsController < ApplicationController
   # GET /instruments.json
   def index
     @instruments = Instrument.all
+    unless @instruments.blank?
+      @instruments = @instruments.sort{|a, b| a.maker.name <=> b.maker.name}
+    end
   end
 
   # GET /instruments/1
@@ -16,17 +19,22 @@ class InstrumentsController < ApplicationController
   def new
     @instrument = Instrument.new
     @makers = Maker.all
+    if @makers.blank?
+      flash[:no_maker_error] = "Any makers are not registered yet. Create a maker first"
+      redirect_to new_maker_path
+    end
   end
 
   # GET /instruments/1/edit
   def edit
-    @Mmakers = Maker.all
+    @makers = Maker.all
   end
 
   # POST /instruments
   # POST /instruments.json
   def create
     @instrument = Instrument.new(instrument_params)
+    @makers = Maker.all
 
     respond_to do |format|
       if @instrument.save

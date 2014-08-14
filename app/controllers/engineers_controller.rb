@@ -4,7 +4,7 @@ class EngineersController < ApplicationController
   # GET /engineers
   # GET /engineers.json
   def index
-    @engineers = Engineer.all
+    @engineers = Engineer.all.order(service_center_id: :asc)
   end
 
   # GET /engineers/1
@@ -16,6 +16,10 @@ class EngineersController < ApplicationController
   def new
     @engineer = Engineer.new
     @service_centers = ServiceCenter.all
+    if @service_centers.blank?
+      flash[:no_sc_error] = "Any service centers are not registered yet. Create a service center first."
+      redirect_to new_service_center_path
+    end
   end
 
   # GET /engineers/1/edit
@@ -27,6 +31,7 @@ class EngineersController < ApplicationController
   # POST /engineers.json
   def create
     @engineer = Engineer.new(engineer_params)
+    @service_centers = ServiceCenter.all
 
     respond_to do |format|
       if @engineer.save

@@ -3,7 +3,7 @@
 <table class="table table-bordered">
 		<tr>
 		<td class="certificate_table_caption">Service center</td>
-		<td><%= @engineer.service_center.name %></td>
+		<td><%= get_attribute(@engineer.service_center, :name) %></td>
 	</tr>
 	<tr>
 		<td class="certificate_table_caption">Name</td>
