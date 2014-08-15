@@ -3,11 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .map_table {
-  width: 500px;
+  width: 561px;
 }
 
 .map_title {
-  width: 500px;
+  width: 561px;
   margin: 10px 0 0 0;
   padding: 2px 8px;
   border-width: 0 10px;
@@ -27,11 +27,16 @@
   font-size: 15px;
 }
 
+.map_header th {
+  text-align: center;
+}
+
 .map_header .caption {
   width: 120px;
 }
 
 .map_data {
+  width: 80px;
   font-weight: bold;
   text-align: center;
 }
