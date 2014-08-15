@@ -1,5 +1,5 @@
 class Operation < ActiveRecord::Base
-  has_many :maps
+  has_many :maps, dependent: :destroy
   
   validates :name,
   presence: true,

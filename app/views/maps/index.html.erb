@@ -1,4 +1,4 @@
-<h1>Listing certificate maps</h1>
+<h1>Certificate Map</h1>
 
 <!--/ Maker select tab -->
 <ul class="nav nav-tabs" role="tablist">
@@ -11,7 +11,7 @@
 
 <% if @maker.instruments.blank? %>
 	<br>
-	<%= link_to 'New Instrum', new_instrument_path %>
+	<%= link_to 'New Instrument', new_instrument_path %>
 <% else %>
 	<% @maker.instruments.each do |instrument| %>
 	<h4 class="map_title"><%= instrument.name %></h4>
