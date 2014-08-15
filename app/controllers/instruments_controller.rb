@@ -18,6 +18,7 @@ class InstrumentsController < ApplicationController
   # GET /instruments/new
   def new
     @instrument = Instrument.new
+    @maker_id = params[:maker_id]
     @makers = Maker.all.order(name: :asc)
     if @makers.blank?
       redirect_to new_maker_path, alert: "Setup is not completed yet. Register makers and instruments"

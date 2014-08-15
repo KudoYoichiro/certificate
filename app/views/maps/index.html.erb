@@ -9,43 +9,39 @@
 	<% end %>
 </ul>
 
-<% if @maker.instruments.blank? %>
-	<br>
-	<%= link_to 'New Instrument', new_instrument_path %>
-<% else %>
-	<% @maker.instruments.each do |instrument| %>
-	<h4 class="map_title"><%= instrument.name %></h4>
-	<table class="table table-bordered table-striped table-hover map_table">
-		<thead class="map_header">
-			<tr>
-				<th class="caption">サービスセンター</th>
-				<th class="caption">エンジニア</th>
-				<% @operations.each do |operation| %>
-				<th><%= operation.name %></th>
-				<% end %>
-			</tr>
-		</thead>
-		
-		<tbody>
-			<% @service_centers.each do |service_center| %>
-			<% first_row = true %>
-			<% service_center.engineers.each do |engineer| %>
-			<tr>
-				<% if first_row %>
-				<td rowspan="<%= service_center.engineers.size %>"><%= service_center.name %></td>
-				<% first_row = false %>
-				<% end %>
-				<td><%= link_to engineer.name, {action: :multi_status_edit_single, instrument_id: instrument.id, engineer_id: engineer.id} %></td>
-				<% @operations.each do |operation| %>
-				<td class="map_data"><%= @maps[instrument.id][engineer.id][operation.id] unless @maps[instrument.id][engineer.id].blank? %></td>
-				<% end %>
-			</tr>
+<% @maker.instruments.each do |instrument| %>
+<h4 class="map_title"><%= instrument.name %></h4>
+<table class="table table-bordered table-striped table-hover map_table">
+	<thead class="map_header">
+		<tr>
+			<th class="caption">サービスセンター</th>
+			<th class="caption">エンジニア</th>
+			<% @operations.each do |operation| %>
+			<th><%= operation.name %></th>
 			<% end %>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<% @service_centers.each do |service_center| %>
+		<% first_row = true %>
+		<% service_center.engineers.each do |engineer| %>
+		<tr>
+			<% if first_row %>
+			<td rowspan="<%= service_center.engineers.size %>"><%= service_center.name %></td>
+			<% first_row = false %>
 			<% end %>
-		</tbody>
-	</table>
-	<% end %>
+			<td><%= link_to engineer.name, {action: :multi_status_edit_single, instrument_id: instrument.id, engineer_id: engineer.id} %></td>
+			<% @operations.each do |operation| %>
+			<td class="map_data"><%= @maps[instrument.id][engineer.id][operation.id] unless @maps[instrument.id][engineer.id].blank? %></td>
+			<% end %>
+		</tr>
+		<% end %>
+		<% end %>
+	</tbody>
+</table>
 <% end %>
-<br>
 
+<br>
+<%= link_to 'New Instrument', {controller: :instruments, action: :new, maker_id: @maker.id} %>
 <%#= link_to 'New Certificate Map', new_map_path %>
