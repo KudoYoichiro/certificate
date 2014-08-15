@@ -31,7 +31,9 @@ class MapsController < ApplicationController
       redirect_to new_status_path, alert: "Setup is not complted yet. Register statuses"
       return
     end
+    
     @maker = params[:maker_id].blank? ? @makers.first : Maker.find(params[:maker_id])
+    @maps = get_maps_from_maker(@maker)
   end
 
   # GET /maps/1
@@ -91,7 +93,7 @@ class MapsController < ApplicationController
     @engineer = Engineer.find(params[:engineer_id])
     @operations = Operation.all
     @statuses = Status.all
-    
+    @maps = get_maps_from_instrument(@instrument, :id)
   end
   
   def multi_status_update_single
@@ -134,5 +136,32 @@ class MapsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def map_params
       params.require(:map).permit(:engineer_id, :instrument_id, :operation_id, :status_id)
+    end
+    
+    def get_maps_from_maker(maker, attr=:name)
+      result = Array.new
+      instruments = maker.instruments
+      instruments.each do |instrument|
+        result[instrument.id] = get_maps_from_instrument(instrument)
+=begin
+        maps = instrument.maps.where.not(status_id: nil)
+        maps.each do |map|
+          result[map.instrument_id] = Array.new if result[map.instrument_id].blank?
+          result[map.instrument_id][map.engineer_id] = Array.new if result[map.instrument_id][map.engineer_id].blank?
+          result[map.instrument_id][map.engineer_id][map.operation_id] = map.status.attributes[attr.to_s]
+        end
+=end
+      end
+      return result
+    end
+    
+    def get_maps_from_instrument(instrument, attr=:name)
+      result = Array.new
+      maps = instrument.maps.where.not(status_id: nil)
+      maps.each do |map|
+          result[map.engineer_id] = Array.new if result[map.engineer_id].blank?
+          result[map.engineer_id][map.operation_id] = map.status.attributes[attr.to_s]
+      end
+      return result
     end
 end

@@ -15,11 +15,11 @@
 <% else %>
 	<% @maker.instruments.each do |instrument| %>
 	<h4 class="map_title"><%= instrument.name %></h4>
-	<table class="table table-bordered table-striped map_table">
+	<table class="table table-bordered table-striped table-hover map_table">
 		<thead class="map_header">
 			<tr>
-				<th class="caption">Service Center</th>
-				<th class="caption">Engineer</th>
+				<th class="caption">サービスセンター</th>
+				<th class="caption">エンジニア</th>
 				<% @operations.each do |operation| %>
 				<th><%= operation.name %></th>
 				<% end %>
@@ -37,7 +37,7 @@
 				<% end %>
 				<td><%= link_to engineer.name, {action: :multi_status_edit_single, instrument_id: instrument.id, engineer_id: engineer.id} %></td>
 				<% @operations.each do |operation| %>
-				<td class="map_data"><%= get_status(instrument.id, engineer.id, operation.id) %></td>
+				<td class="map_data"><%= @maps[instrument.id][engineer.id][operation.id] unless @maps[instrument.id][engineer.id].blank? %></td>
 				<% end %>
 			</tr>
 			<% end %>

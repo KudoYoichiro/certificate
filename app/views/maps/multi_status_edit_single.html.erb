@@ -19,7 +19,11 @@
 			<td><%= @engineer.service_center.name %></td>
 			<td><%= @engineer.name %></td>
 			<% @operations.each do |operation| %>
-			<td class="map_data"><%= select_tag 'status_id[]', options_from_collection_for_select(@statuses, :id, :name, selected: get_status(@instrument.id, @engineer.id, operation.id, :id)), include_blank: true %></td>
+				<% if @maps[@engineer.id].blank? %>
+					<td class="map_data"><%= select_tag 'status_id[]', options_from_collection_for_select(@statuses, :id, :name), include_blank: true %></td>
+				<% else %>
+					<td class="map_data"><%= select_tag 'status_id[]', options_from_collection_for_select(@statuses, :id, :name, selected: @maps[@engineer.id][operation.id]), include_blank: true %></td>
+				<% end %>
 			<% end %>
 		</tr>
 	</tbody>
