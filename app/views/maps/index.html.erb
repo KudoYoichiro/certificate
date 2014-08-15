@@ -9,39 +9,43 @@
 	<% end %>
 </ul>
 
-<% @maker.instruments.each do |instrument| %>
-<h4 class="map_title"><%= instrument.name %></h4>
-<table class="table table-bordered table-striped map_table">
-	<thead class="map_header">
-		<tr>
-			<th class="caption">Service Center</th>
-			<th class="caption">Engineer</th>
-			<% @operations.each do |operation| %>
-			<th><%= operation.name %></th>
+<% if @maker.instruments.blank? %>
+	<br>
+	<%= link_to 'New Instrum', new_instrument_path %>
+<% else %>
+	<% @maker.instruments.each do |instrument| %>
+	<h4 class="map_title"><%= instrument.name %></h4>
+	<table class="table table-bordered table-striped map_table">
+		<thead class="map_header">
+			<tr>
+				<th class="caption">Service Center</th>
+				<th class="caption">Engineer</th>
+				<% @operations.each do |operation| %>
+				<th><%= operation.name %></th>
+				<% end %>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<% @service_centers.each do |service_center| %>
+			<% first_row = true %>
+			<% service_center.engineers.each do |engineer| %>
+			<tr>
+				<% if first_row %>
+				<td rowspan="<%= service_center.engineers.size %>"><%= service_center.name %></td>
+				<% first_row = false %>
+				<% end %>
+				<td><%= link_to engineer.name, {action: :multi_status_edit_single, instrument_id: instrument.id, engineer_id: engineer.id} %></td>
+				<% @operations.each do |operation| %>
+				<td class="map_data"><%= get_status(instrument.id, engineer.id, operation.id) %></td>
+				<% end %>
+			</tr>
 			<% end %>
-		</tr>
-	</thead>
-	
-	<tbody>
-		<% @service_centers.each do |service_center| %>
-		<% first_row = true %>
-		<% service_center.engineers.each do |engineer| %>
-		<tr>
-			<% if first_row %>
-			<td rowspan="<%= service_center.engineers.size %>"><%= service_center.name %></td>
-			<% first_row = false %>
 			<% end %>
-			<td><%= link_to engineer.name, {action: :multi_status_edit_single, instrument_id: instrument.id, engineer_id: engineer.id} %></td>
-			<% @operations.each do |operation| %>
-			<td class="map_data"><%= get_status(instrument.id, engineer.id, operation.id) %></td>
-			<% end %>
-		</tr>
-		<% end %>
-		<% end %>
-	</tbody>
-</table>
+		</tbody>
+	</table>
+	<% end %>
 <% end %>
-
 <br>
 
-<%= link_to 'New Certificate Map', new_map_path %>
+<%#= link_to 'New Certificate Map', new_map_path %>

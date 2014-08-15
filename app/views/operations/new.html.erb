@@ -1,3 +1,8 @@
+<% unless alert.blank? %>
+<div id="error_explanation">
+	<h2><%= alert %></h2>
+</div>
+<% end %>
 <h1>New operation</h1>
 
 <%= render 'form' %>

@@ -18,10 +18,10 @@ class InstrumentsController < ApplicationController
   # GET /instruments/new
   def new
     @instrument = Instrument.new
-    @makers = Maker.all
+    @makers = Maker.all.order(name: :asc)
     if @makers.blank?
-      flash[:no_maker_error] = "Any makers are not registered yet. Create a maker first"
-      redirect_to new_maker_path
+      redirect_to new_maker_path, alert: "Setup is not completed yet. Register makers and instruments"
+      return
     end
   end
 

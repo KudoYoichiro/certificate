@@ -1,6 +1,6 @@
-<% unless flash[:no_maker_error].blank? %>
+<% unless alert.blank? %>
 <div id="error_explanation">
-	<h2><%= flash[:no_maker_error] %></h2>
+	<h2><%= alert %></h2>
 </div>
 <% end %>
 <h1>New maker</h1>

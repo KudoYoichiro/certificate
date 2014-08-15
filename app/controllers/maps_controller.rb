@@ -5,10 +5,33 @@ class MapsController < ApplicationController
   # GET /maps.json
   def index
     @makers = Maker.all.order(name: :asc)
-    @maker = params[:maker_id].blank? ? @makers.first : Maker.find(params[:maker_id])
-    
+    if @makers.blank?
+      redirect_to new_maker_path, alert: "Setup is not completed yet. Register maker"
+      return
+    end
+    unless Instrument.exists?
+      redirect_to new_instrument_path, alert: "Setup is not completed yet. Register instruments"
+      return
+    end
     @service_centers = ServiceCenter.all
+    if @service_centers.blank?
+      redirect_to new_service_center_path, alert: "Setup is not completed yet. Register service centers"
+      return
+    end
+    unless Engineer.exists?
+      redirect_to new_engineer_path, alert: "Setup is not complted yet. Register engineers"
+      return
+    end
     @operations = Operation.all
+    if @operations.blank?
+      redirect_to new_operation_path, alert: "Setup is not completed yet. Register operatinos"
+      return
+    end
+    unless Status.exists?
+      redirect_to new_status_path, alert: "Setup is not complted yet. Register statuses"
+      return
+    end
+    @maker = params[:maker_id].blank? ? @makers.first : Maker.find(params[:maker_id])
   end
 
   # GET /maps/1
