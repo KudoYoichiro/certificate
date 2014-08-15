@@ -1,0 +1,36 @@
+<h1><%= @engineer.name %>さんの編集ページ</h1>
+<h2><%= @instrument.maker.name %></h2>
+<h4 class="map_title"><%= @instrument.name %></h4>
+
+<%= form_tag action: :multi_status_update_single do %>
+<table class="table table-bordered map_table">
+	<thead class="map_header">
+		<tr>
+			<th class="caption">Service Center</th>
+			<th class="caption">Engineer</th>
+			<% @operations.each do |operation| %>
+			<th><%= operation.name %></th>
+			<% end %>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<tr>
+			<td><%= @engineer.service_center.name %></td>
+			<td><%= @engineer.name %></td>
+			<% @operations.each do |operation| %>
+			<td class="map_data"><%= select_tag 'status_id[]', options_from_collection_for_select(@statuses, :id, :name, selected: get_status(@instrument.id, @engineer.id, operation.id, :id)), include_blank: true %></td>
+			<% end %>
+		</tr>
+	</tbody>
+</table>
+<%= hidden_field :engineer, :id %>
+<%= hidden_field :instrument, :id %>
+
+<div class="actions">
+	<%= submit_tag '登録する' %>
+</div>
+<% end %>
+
+<br />
+<%= link_to 'Back', {action: :index, maker_id: @instrument.maker.id} %>

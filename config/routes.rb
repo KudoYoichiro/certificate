@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :maps
+  resources :maps do
+    collection do
+      get :multi_status_edit_single
+      post :multi_status_update_single
+    end
+  end
 
   resources :statuses
 

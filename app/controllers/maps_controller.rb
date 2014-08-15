@@ -63,6 +63,35 @@ class MapsController < ApplicationController
     end
   end
 
+  def multi_status_edit_single
+    @instrument = Instrument.find(params[:instrument_id])
+    @engineer = Engineer.find(params[:engineer_id])
+    @operations = Operation.all
+    @statuses = Status.all
+    
+  end
+  
+  def multi_status_update_single
+    instrument = Instrument.find(params[:instrument][:id])
+    engineer_id = params[:engineer][:id]
+    status_ids = params[:status_id]
+    operations = Operation.all
+    
+    # OPTIMIZE: 高速化が必要
+    loop_index = 0
+    operations.each do |operation|
+      map = Map.find_by(instrument_id: instrument.id, engineer_id: engineer_id, operation_id: operation.id)
+      if map.blank?
+        map = Map.new(instrument_id: instrument.id, engineer_id: engineer_id, operation_id: operation.id, status_id: status_ids[loop_index])
+        map.save
+      else
+        map.update(status_id: status_ids[loop_index])
+      end
+      loop_index += 1
+    end 
+    redirect_to action: :index, maker_id: instrument.maker.id
+  end
+  
   # DELETE /maps/1
   # DELETE /maps/1.json
   def destroy
