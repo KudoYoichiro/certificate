@@ -1,4 +1,4 @@
-<h1>Certificate Map</h1>
+<h1 class="page-title">Certificate Map</h1>
 
 <!--/ Maker select tab -->
 <ul class="nav nav-tabs" role="tablist">
@@ -10,9 +10,9 @@
 </ul>
 
 <% @maker.instruments.each do |instrument| %>
-<h4 class="map_title"><%= instrument.name %></h4>
-<table class="table table-bordered table-striped table-hover map_table">
-	<thead class="map_header">
+<h4 class="map-title"><%= instrument.name %></h4>
+<table class="table table-bordered table-striped table-hover map-table">
+	<thead class="map-header">
 		<tr>
 			<th class="caption">サービスセンター</th>
 			<th class="caption">エンジニア</th>
@@ -33,7 +33,7 @@
 			<% end %>
 			<td><%= link_to engineer.name, {action: :multi_status_edit_single, instrument_id: instrument.id, engineer_id: engineer.id} %></td>
 			<% @operations.each do |operation| %>
-			<td class="map_data"><%= @maps[instrument.id][engineer.id][operation.id] unless @maps[instrument.id][engineer.id].blank? %></td>
+			<td class="map-data"><%= @maps[instrument.id][engineer.id][operation.id] unless @maps[instrument.id][engineer.id].blank? %></td>
 			<% end %>
 		</tr>
 		<% end %>
@@ -45,3 +45,4 @@
 <br>
 <%= link_to 'New Instrument', {controller: :instruments, action: :new, maker_id: @maker.id} %>
 <%#= link_to 'New Certificate Map', new_map_path %>
+

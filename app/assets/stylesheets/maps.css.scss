@@ -2,11 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.map_table {
+.page-title {
+  padding: 10px;
+  background-color: #f2f2e5;
+}
+
+.map-table {
   width: 601px;
 }
 
-.map_title {
+.map-title {
   width: 601px;
   margin: 10px 0 0 0;
   padding: 2px 8px;
@@ -21,21 +26,21 @@
   font-style: italic;
 }
 
-.map_header {
+.map-header {
   background: #fff;
   color: #494949;
   font-size: 15px;
 }
 
-.map_header th {
+.map-header th {
   text-align: center;
 }
 
-.map_header .caption {
+.map-header .caption {
   width: 140px;
 }
 
-.map_data {
+.map-data {
   width: 80px;
   font-weight: bold;
   text-align: center;

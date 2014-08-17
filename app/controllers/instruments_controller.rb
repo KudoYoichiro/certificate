@@ -29,6 +29,8 @@ class InstrumentsController < ApplicationController
   # GET /instruments/1/edit
   def edit
     @makers = Maker.all
+    @maker_id = params[:maker_id]
+    @params = params
   end
 
   # POST /instruments
