@@ -198,6 +198,7 @@ th {
   a,
   a:visited {
     text-decoration: underline;
+    color: #000000;
   }
   a[href]:after {
     content: " (" attr(href) ")";
@@ -3630,6 +3631,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   line-height: 1.42857143;
   border: 1px solid transparent;
   border-radius: 4px 4px 0 0;
+  color: #000000;
 }
 .nav-tabs > li > a:hover {
   border-color: #eee #eee #ddd;

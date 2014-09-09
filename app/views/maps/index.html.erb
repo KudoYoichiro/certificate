@@ -31,7 +31,7 @@
 			<td rowspan="<%= service_center.engineers.size %>"><%= service_center.name %></td>
 			<% first_row = false %>
 			<% end %>
-			<td><%= link_to engineer.name, {action: :multi_status_edit_single, instrument_id: instrument.id, engineer_id: engineer.id} %></td>
+			<td class="map-data-engineer"><%= link_to engineer.name, {action: :multi_status_edit_single, instrument_id: instrument.id, engineer_id: engineer.id} %></td>
 			<% @operations.each do |operation| %>
 			<td class="map-data"><%= @maps[instrument.id][engineer.id][operation.id] unless @maps[instrument.id][engineer.id].blank? %></td>
 			<% end %>
